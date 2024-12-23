@@ -1,134 +1,93 @@
+<!--index.html-->
+
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Online Quiz Maker</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-        }
-        header {
-            background-color: #4CAF50;
-            color: white;
-            text-align: center;
-            padding: 1em;
-        }
-        nav {
-            display: flex;
-            justify-content: center;
-            background-color: #333;
-        }
-        nav a {
-            color: white;
-            padding: 14px 20px;
-            text-decoration: none;
-            text-align: center;
-        }
-        nav a:hover {
-            background-color: #ddd;
-            color: black;
-        }
-        .container {
-            padding: 2em;
-        }
-        .quiz-form {
-            display: flex;
-            flex-direction: column;
-            max-width: 600px;
-            margin: auto;
-        }
-        .quiz-form input[type="text"],
-        .quiz-form textarea,
-        .quiz-form select {
-            margin: 10px 0;
-            padding: 10px;
-            font-size: 16px;
-        }
-        .quiz-form button {
-            background-color: #4CAF50;
-            color: white;
-            padding: 10px;
-            font-size: 16px;
-            border: none;
-            cursor: pointer;
-        }
-        .quiz-form button:hover {
-            background-color: #45a049;
-        }
-        .quiz-list {
-            max-width: 800px;
-            margin: auto;
-            display: flex;
-            flex-wrap: wrap;
-            gap: 20px;
-        }
-        .quiz-card {
-            border: 1px solid #ccc;
-            padding: 20px;
-            width: calc(33% - 40px);
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-        }
-        .quiz-card h3 {
-            margin: 0;
-        }
-    </style>
+    <meta charset="UTF-8" />
+    <meta name="viewport" 
+          content="width=device-width,
+                   initial-scale=1.0" />
+    <link rel="stylesheet"
+          href="./style.css" />
+    <title>Code Quiz</title>
 </head>
+
 <body>
-    <header>
-        <h1>Online Quiz Maker</h1>
-    </header>
-    <nav>
-        <a href="#home">Home</a>
-        <a href="#create">Create a Quiz</a>
-        <a href="#list">Browse Quizzes</a>
-    </nav>
-    <main class="container">
-        <section id="home">
-            <h2>Welcome to the Online Quiz Maker!</h2>
-            <p>Create, take, and explore quizzes all in one platform.</p>
-        </section>
+    <div class="containerNew">
+        <header>
+            <div>
+                <a href="./highscore.html">
+                    <button class="scores-header" 
+                            id="view-high-scores">
+                        View High Scores
+                    </button>
+                </a>
+            </div>
 
-        <section id="create">
-            <h2>Create a New Quiz</h2>
-            <form class="quiz-form">
-                <input type="text" name="Question" placeholder="Question" required>
-                <textarea name="question" placeholder="Have you practiced sport or any physical activity out of your working hours at least 30 min or more during the last month?" rows="4" required></textarea>
-                <label for="options">Options:</label>
-                <input type="text" name="option1" placeholder="3 times or more per week" required>
-                <input type="text" name="option2" placeholder="1 or 2 times per week" required>
-                <input type="text" name="option3" placeholder="less than 4 times per month" required>
-                <input type="text" name="option4" placeholder="i don't practice sport during the month" required>
-                <label for="correct">Correct Answer:</label>
-                <select name="correct" required>
-                    <option value="1">Option 1</option>
-                    <option value="2">Option 2</option>
-                    <option value="3">Option 3</option>
-                    <option value="4">Option 4</option>
-                </select>
-                <button type="submit">Save Quiz</button>
-            </form>
-        </section>
+            <div class="timer">
+                <p>
+                    Time:
+                    <span id="timer">
+                        0
+                    </span>
+                </p>
+            </div>
+        </header>
 
-        <section id="list">
-            <h2>Available Quizzes</h2>
-            <div class="quiz-list">
-                <div class="quiz-card">
-                    <h3>Sample Quiz 1</h3>
-                    <button>Take Quiz</button>
-                </div>
-                <div class="quiz-card">
-                    <h3>Sample Quiz 2</h3>
-                    <button>Take Quiz</button>
-                </div>
-                <div class="quiz-card">
-                    <h3>Sample Quiz 3</h3>
-                    <button>Take Quiz</button>
+        <main class="quiz">
+            <div id="quiz-start">
+                <div class="landing" 
+                     id="start-screen">
+                    <h1 id="top">
+                        GeeksforGeeks
+                    </h1>
+                    <h1>
+                        Coding Quiz Challenge
+                    </h1>
+                    <p>
+                        Try to answer the following
+                        code-related questions with
+                        in the time limit. Keep in
+                        mind that incorrect answers
+                        will penalize your score/time
+                        by ten seconds!
+                    </p>
+                    <button id="start">
+                        Start Quiz
+                    </button>
                 </div>
             </div>
-        </section>
-    </main>
+
+            <div class="hide" id="questions">
+                <h2 id="question-words"></h2>
+                <div class="options" id="options">
+                </div>
+            </div>
+
+            <div class="hide" id="quiz-end">
+                <h2>All Done!</h2>
+                <p>Your final score is:
+                    <span id="score-final">
+                    </span>
+                </p>
+                <p>
+                    Please enter your name:
+                    <input type="text" 
+                           id="name" 
+                           max="3" />
+                    <button id="submit-score">
+                        Submit
+                    </button>
+                </p>
+            </div>
+
+            <div id="feedback" 
+                 class="feedback hide">
+            </div>
+        </main>
+    </div>
+    <script src="./script.js"></script>
 </body>
+
 </html>
